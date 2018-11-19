@@ -10,6 +10,7 @@ project(turtlebot_walker)
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
+  sensor_msgs
   std_msgs
   tf
 )

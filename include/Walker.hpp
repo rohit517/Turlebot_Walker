@@ -39,9 +39,19 @@
 #ifndef INCLUDE_WALKER_HPP_
 #define INCLUDE_WALKER_HPP_
 
+#include "ros/ros.h"
+#include "sensor_msgs/LaserScan.h"
+
 #include <iostream>
 
 class Walker {
+ private:
+  ros::NodeHandle nh;
+  ros::Subscriber laserSub;
+
+  // Laser scan threshold
+  float laserRangeThreshold;
+
  public:
   /**
    *  @brief Default constructor for Walker class
@@ -52,6 +62,10 @@ class Walker {
    *  @brief Default destructor for Walker class
    */
   ~Walker();
+
+  void processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scanMsg);
+
+  void walk();
 };
 
 #endif  // INCLUDE_WALKER_HPP_

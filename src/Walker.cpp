@@ -39,9 +39,48 @@
 #include "../include/Walker.hpp"
 
 Walker::Walker() {
-  std::cout << "New turtlebot walker created." << std::endl;
+  // Initialize threshold
+  laserRangeThreshold = 0.70;
+
+  // Subscribe to laser scan topic
+  laserSub = nh.subscribe < sensor_msgs::LaserScan
+      > ("/scan", 10, &Walker::processLaserScan, this);
+
+  ROS_INFO("New turtlebot walker created. Object distance threshold set to %f",
+           laserRangeThreshold);
 }
 
 Walker::~Walker() {
 
+}
+
+void Walker::processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scanMsg) {
+  // Set the minimum distance to the first distance in scan message
+  float minDistance = scanMsg->ranges[0];
+
+  // Iterate through the scan message to get the closest distance value
+  for (int i = 0; i < scanMsg->ranges.size(); i++) {
+    float currentScanVal = scanMsg->ranges[i];
+    if (currentScanVal < minDistance) {
+      minDistance = currentScanVal;
+    }
+  }
+
+  if (minDistance < laserRangeThreshold) {
+    ROS_INFO("Terrain!");
+  }
+
+//  ROS_INFO("Closet point distance %f", minDistance);
+}
+
+void Walker::walk() {
+  ros::Rate loop_rate(10);
+
+  while (ros::ok()) {
+
+
+
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
 }

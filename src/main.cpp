@@ -39,5 +39,13 @@
 #include "../include/Walker.hpp"
 
 int main(int argc, char **argv) {
-  Walker smallTurtle;
+  // Initialize ros walker node
+  ros::init(argc, argv, "walker");
+
+  // Create Walker class object
+  Walker testudo;
+
+  // Call walk method
+  testudo.walk();
+  return 0;
 }
