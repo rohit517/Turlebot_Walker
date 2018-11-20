@@ -39,19 +39,15 @@
 #ifndef INCLUDE_WALKER_HPP_
 #define INCLUDE_WALKER_HPP_
 
+// ROS header files
 #include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
+#include "geometry_msgs/Twist.h"
 
+// C++ header files
 #include <iostream>
 
 class Walker {
- private:
-  ros::NodeHandle nh;
-  ros::Subscriber laserSub;
-
-  // Laser scan threshold
-  float laserRangeThreshold;
-
  public:
   /**
    *  @brief Default constructor for Walker class
@@ -63,9 +59,40 @@ class Walker {
    */
   ~Walker();
 
+  /**
+   *   @brief Function to process laser scan topic
+   *
+   *   @param scanMsg is a pointer to laser scan message
+   *
+   *   @return void
+   */
   void processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scanMsg);
 
+  /**
+   *   @brief Function to navigate the turtlebot and
+   *          publish velocity commands
+   *
+   *   @return void
+   */
   void walk();
+
+ private:
+  ros::NodeHandle nh;
+
+  // Laser scan topic subscriber
+  ros::Subscriber laserSub;
+
+  // Flag to indicate if path is clear
+  bool pathClear;
+
+  // Variable to store turtlebot velocity
+  geometry_msgs::Twist velMsg;
+
+  // Geometry message twist publisher
+  ros::Publisher velPub;
+
+  // Laser scan threshold
+  float laserRangeThreshold;
 };
 
 #endif  // INCLUDE_WALKER_HPP_

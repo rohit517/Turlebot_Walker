@@ -40,23 +40,51 @@
 
 Walker::Walker() {
   // Initialize threshold
-  laserRangeThreshold = 0.70;
+  laserRangeThreshold = 0.80;
+
+  // Initialize variable pathClear
+  pathClear = true;
+
+  // Initialize publisher topic
+  velPub = nh.advertise < geometry_msgs::Twist
+      > ("/mobile_base/commands/velocity", 100);
+
+  // Set start velocity message to zero
+  velMsg.linear.x = 0.0;
+  velMsg.linear.y = 0.0;
+  velMsg.linear.z = 0.0;
+  velMsg.angular.x = 0.0;
+  velMsg.angular.y = 0.0;
+  velMsg.angular.z = 0.0;
+
+  // Publish the velocity
+  velPub.publish(velMsg);
 
   // Subscribe to laser scan topic
   laserSub = nh.subscribe < sensor_msgs::LaserScan
-      > ("/scan", 10, &Walker::processLaserScan, this);
+      > ("/scan", 100, &Walker::processLaserScan, this);
 
   ROS_INFO("New turtlebot walker created. Object distance threshold set to %f",
            laserRangeThreshold);
 }
 
 Walker::~Walker() {
+  // Set velocity to zero on exit
+  velMsg.linear.x = 0.0;
+  velMsg.linear.y = 0.0;
+  velMsg.linear.z = 0.0;
+  velMsg.angular.x = 0.0;
+  velMsg.angular.y = 0.0;
+  velMsg.angular.z = 0.0;
 
+  // Publish the velocity
+  velPub.publish(velMsg);
 }
 
 void Walker::processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scanMsg) {
   // Set the minimum distance to the first distance in scan message
   float minDistance = scanMsg->ranges[0];
+  pathClear = true;
 
   // Iterate through the scan message to get the closest distance value
   for (int i = 0; i < scanMsg->ranges.size(); i++) {
@@ -66,21 +94,41 @@ void Walker::processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scanMsg) {
     }
   }
 
+  // If minimum distance is less than threshold, set pathClear flag to false
   if (minDistance < laserRangeThreshold) {
-    ROS_INFO("Terrain!");
+    pathClear = false;
   }
 
 //  ROS_INFO("Closet point distance %f", minDistance);
 }
 
+
+
 void Walker::walk() {
+  // Set loop frequency
   ros::Rate loop_rate(10);
 
   while (ros::ok()) {
+    if (pathClear) {
+      // Move straight as path is clear
+      velMsg.angular.z = 0.0;
+      velMsg.linear.x = 0.15;
+      ROS_INFO("Path clear. Moving ahead...");
+    }
+    else {
+      // Turn as path is not clear
+      velMsg.angular.z = 0.8;
+      velMsg.linear.x = 0.0;
+      ROS_INFO("Obstacle ahead. Turning...");
+    }
 
+    // Publish the velocity commands
+    velPub.publish(velMsg);
 
-
+    // Spin once to check for callbacks
     ros::spinOnce();
+
+    // Sleep for desired frequency
     loop_rate.sleep();
   }
 }
