@@ -114,8 +114,7 @@ void Walker::walk() {
       velMsg.angular.z = 0.0;
       velMsg.linear.x = 0.15;
       ROS_INFO("Path clear. Moving ahead...");
-    }
-    else {
+    } else {
       // Turn as path is not clear
       velMsg.angular.z = 0.8;
       velMsg.linear.x = 0.0;

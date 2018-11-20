@@ -39,13 +39,13 @@
 #ifndef INCLUDE_WALKER_HPP_
 #define INCLUDE_WALKER_HPP_
 
+// C++ header files
+#include <iostream>
+
 // ROS header files
 #include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
 #include "geometry_msgs/Twist.h"
-
-// C++ header files
-#include <iostream>
 
 class Walker {
  public:
