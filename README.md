@@ -90,12 +90,12 @@ A sample output can be seen below
 ```
 path:        turtlebotWalker.bag
 version:     2.0
-duration:    16.2s
-start:       Dec 31 1969 19:00:00.23 (0.23)
-end:         Dec 31 1969 19:00:16.43 (16.43)
-size:        6.7 MB
-messages:    13640
-compression: none [9/9 chunks]
+duration:    35.3s
+start:       Dec 31 1969 19:00:00.22 (0.22)
+end:         Dec 31 1969 19:00:35.48 (35.48)
+size:        14.5 MB
+messages:    29760
+compression: none [19/19 chunks]
 types:       bond/Status                           [eacc84bf5d65b6777d4c50f463dfb9c8]
              dynamic_reconfigure/Config            [958f16a05573709014982821e6822580]
              dynamic_reconfigure/ConfigDescription [757ce9d44ba8ddd801bb30bc456f946f]
@@ -110,26 +110,27 @@ types:       bond/Status                           [eacc84bf5d65b6777d4c50f463df
              sensor_msgs/LaserScan                 [90c7ef2dc6895d81024acba2ac42f369]
              std_msgs/String                       [992ce8a1687cec8c8bd883ec73ca41d1]
              tf2_msgs/TFMessage                    [94810edda583a504dfda3829e70d7eec]
-topics:      /clock                                            1620 msgs    : rosgraph_msgs/Clock                  
+topics:      /clock                                            3527 msgs    : rosgraph_msgs/Clock                  
              /cmd_vel_mux/active                                  1 msg     : std_msgs/String                      
              /cmd_vel_mux/parameter_descriptions                  1 msg     : dynamic_reconfigure/ConfigDescription
              /cmd_vel_mux/parameter_updates                       1 msg     : dynamic_reconfigure/Config           
              /depthimage_to_laserscan/parameter_descriptions      1 msg     : dynamic_reconfigure/ConfigDescription
              /depthimage_to_laserscan/parameter_updates           1 msg     : dynamic_reconfigure/Config           
-             /gazebo/link_states                               1603 msgs    : gazebo_msgs/LinkStates               
-             /gazebo/model_states                              1603 msgs    : gazebo_msgs/ModelStates              
+             /gazebo/link_states                               3507 msgs    : gazebo_msgs/LinkStates               
+             /gazebo/model_states                              3507 msgs    : gazebo_msgs/ModelStates              
              /gazebo/parameter_descriptions                       1 msg     : dynamic_reconfigure/ConfigDescription
              /gazebo/parameter_updates                            1 msg     : dynamic_reconfigure/Config           
-             /joint_states                                     1604 msgs    : sensor_msgs/JointState               
-             /laserscan_nodelet_manager/bond                     30 msgs    : bond/Status                           (2 connections)
-             /mobile_base/commands/velocity                     162 msgs    : geometry_msgs/Twist                  
-             /mobile_base/sensors/imu_data                     1614 msgs    : sensor_msgs/Imu                      
-             /mobile_base_nodelet_manager/bond                   60 msgs    : bond/Status                           (3 connections)
-             /odom                                             1616 msgs    : nav_msgs/Odometry                    
-             /rosout                                            187 msgs    : rosgraph_msgs/Log                     (8 connections)
-             /rosout_agg                                        170 msgs    : rosgraph_msgs/Log                    
-             /scan                                              145 msgs    : sensor_msgs/LaserScan                
-             /tf                                               3218 msgs    : tf2_msgs/TFMessage                    (2 connections)
+             /joint_states                                     3509 msgs    : sensor_msgs/JointState               
+             /laserscan_nodelet_manager/bond                     68 msgs    : bond/Status                           (2 connections)
+             /mobile_base/commands/velocity                     352 msgs    : geometry_msgs/Twist                  
+             /mobile_base/sensors/imu_data                     3519 msgs    : sensor_msgs/Imu                      
+             /mobile_base_nodelet_manager/bond                  136 msgs    : bond/Status                           (3 connections)
+             /odom                                             3518 msgs    : nav_msgs/Odometry                    
+             /rosout                                            379 msgs    : rosgraph_msgs/Log                     (8 connections)
+             /rosout_agg                                        364 msgs    : rosgraph_msgs/Log                    
+             /scan                                              338 msgs    : sensor_msgs/LaserScan                
+             /tf                                               7028 msgs    : tf2_msgs/TFMessage                    (2 connections)
+             /tf_static                                           1 msg     : tf2_msgs/TFMessage
 
 ```
 
