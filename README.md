@@ -70,7 +70,7 @@ To close the nodes, press CTRL+C in the terminal.
 
 ## Recording bag file with launch file
 
-The launch file can be passed a parameter to record all the topics (except /camera/*) being published as a rosbag file into the results folder. File named turtlebotWalker.bag can be found inside the results folder with a ~20 sec recording. 
+The launch file can be passed a parameter to record all the topics (except /camera/*) being published as a rosbag file into the results folder. File named turtlebotWalker.bag can be found inside the results folder with a ~30 sec recording. 
 
 To record rosbag, open a new terminal and enter the following commands to launch the walker.launch file. The argument record is used to choose whether to record a bagfile or not. Default is false (record:=false). 
 ```
