@@ -36,7 +36,7 @@
  *
  */
 
-#include "../include/Walker.hpp"
+#include "Walker.hpp"
 
 int main(int argc, char **argv) {
   // Initialize ros walker node

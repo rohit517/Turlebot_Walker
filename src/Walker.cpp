@@ -36,7 +36,7 @@
  *
  */
 
-#include "../include/Walker.hpp"
+#include "Walker.hpp"
 
 Walker::Walker() {
   // Initialize threshold
