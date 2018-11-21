@@ -43,7 +43,7 @@ catkin_make
 
 To run the demo using the launch file, open a terminal and run the following commands
 ```
-cd catkin_ws
+cd ~/catkin_ws
 source devel/setup.bash
 roslaunch turtlebot_walker walker.launch
 ```
