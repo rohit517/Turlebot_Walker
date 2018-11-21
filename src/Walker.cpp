@@ -23,7 +23,7 @@
  */
 
 /**
- *  @file    walker.cpp
+ *  @file    Walker.cpp
  *  @author  Rohitkrishna Nambiar (rohit517)
  *  @date    11/19/2018
  *  @version 1.0
@@ -32,7 +32,7 @@
  *
  *  @section DESCRIPTION
  *
- *  Walker slass file to implement turtlebot walker.
+ *  Walker class file to implement turtlebot walker.
  *
  */
 
@@ -112,7 +112,7 @@ void Walker::walk() {
     if (pathClear) {
       // Move straight as path is clear
       velMsg.angular.z = 0.0;
-      velMsg.linear.x = 0.15;
+      velMsg.linear.x = 0.10;
       ROS_INFO("Path clear. Moving ahead...");
     } else {
       // Turn as path is not clear

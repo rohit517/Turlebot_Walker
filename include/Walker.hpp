@@ -23,7 +23,7 @@
  */
 
 /**
- *  @file    walker.hpp
+ *  @file    Walker.hpp
  *  @author  Rohitkrishna Nambiar (rohit517)
  *  @date    11/19/2018
  *  @version 1.0
